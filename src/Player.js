@@ -8,8 +8,9 @@ const Player = (props) => {
         fluid: true,
         autoplay: true,
         muted: true,
+        controls: false,
         aspectRatio: '16:9',
-        poster: 'https://qoder.byteark.com/images/video-frames/1/GU/cg/1GUcgd3XwsmD-large.jpg',
+        poster: SOURCE[0].poster,
         sources: SOURCE[0],
         onReady: (instance) => {
             onReady(instance)

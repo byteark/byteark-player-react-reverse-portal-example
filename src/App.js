@@ -13,19 +13,28 @@ function App() {
 
   const nextVideo = () => {
     const nextIndex = index + 1 >= SOURCE.length ? 0 : index + 1;
-    instance.src(SOURCE[nextIndex
-    ]);
-    if(isPictureMode) setIsPictureMode(false)
+    instance.src(SOURCE[nextIndex]);
+    instance.poster(SOURCE[nextIndex].poster);
+    if (isPictureMode) setIsPictureMode(false);
     setIndex(nextIndex);
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <span className="title">BYTEARK PLAYER WITH REACT REVERSE PORTAL EXAMPLE</span>
+        <span className="title">
+          BYTEARK PLAYER WITH REACT REVERSE PORTAL EXAMPLE
+        </span>
         <div className="button-container">
-          <button className="button" onClick={nextVideo}>next</button>
-          <button className="button" onClick={() => setIsPictureMode(!isPictureMode)}> {isPictureMode ? 'exit' : 'enter'} picture mode </button>
+          <button className="button" onClick={nextVideo}>
+            next
+          </button>
+          <button
+            className="button"
+            onClick={() => setIsPictureMode(!isPictureMode)}
+          >
+            {isPictureMode ? "exit" : "enter"} picture mode
+          </button>
         </div>
         <portals.InPortal node={portalNode}>
           <Player
@@ -35,29 +44,19 @@ function App() {
           />
         </portals.InPortal>
         <div className="container-row">
-          <div className="container">
-            {(!isPictureMode && index === 0) ? (
-              <portals.OutPortal node={portalNode} />
-            ) : (
-              <div className="container-placeholder" />
-            )}
-          </div>
-          <div className="container">
-            {(!isPictureMode && index === 1 ) ? (
-              <portals.OutPortal node={portalNode} />
-            ) : (
-              <div className="container-placeholder" />
-            )}
-          </div>
-          <div className="container">
-            {(!isPictureMode &&index === 2 ) ? (
-              <portals.OutPortal node={portalNode} />
-            ) : (
-              <div className="container-placeholder" />
-            )}
-          </div>
+          {SOURCE.map((videoSource,sourceIndex) => (
+            <div className="container">
+              {!isPictureMode && index === sourceIndex ? (
+                <portals.OutPortal node={portalNode} />
+              ) : (
+                <img className="container-placeholder" src={videoSource.poster} />
+              )}
+            </div>
+          ))}
         </div>
-        <div className="picture-mode-container">{isPictureMode && <portals.OutPortal node={portalNode} />}</div>
+        <div className="picture-mode-container">
+          {isPictureMode && <portals.OutPortal node={portalNode} />}
+        </div>
       </header>
     </div>
   );

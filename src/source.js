@@ -1,19 +1,21 @@
 export const SOURCE = [
-    {
-      videoId: 'EeejW4etwB',
-      src: 'https://inox.qoder.byteark.com/video-objects/EeejW4etwB/playlist.m3u8',
-      type: 'application/x-mpegURL',
-      title: 'Big Buck Bunny',
-    },
-    {
-      videoId: 'RVuxia75cH1U',
-      src: 'https://vod.thaipbs.or.th/video-objects/RVuxia75cH1U/playlist.m3u8',
-      type: 'application/x-mpegURL',
-      title: 'ดูให้รู้ - ตลาดเก่า เต้าหู้ และร้านปลาในตำนาน'
-    },
-    {
-      videoId: 'SM9iq4sVAf05',
-      src: 'https://vod.thaipbs.or.th/video-objects/SM9iq4sVAf05/playlist.m3u8',
-      type: 'application/x-mpegURL',
-      title: 'ดูให้รู้ - ไปเรียนเป็นเชฟซูชิเพื่อคนที่รัก'
-    }]
+  {
+    videoId: "1",
+    src: "https://inox-bhm9yr.cdn.byteark.com/video-objects/RI2PimuHxDXw/playlist.m3u8",
+    type: "application/x-mpegURL",
+    title: "Big Buck Bunny",
+    poster:
+      "https://qoder.byteark.com/images/video-frames/1/GU/cg/1GUcgd3XwsmD-large.jpg",
+    description:
+      "Big Buck Bunny (code-named Project Peach) is a 2008 short computer-animated comedy film featuring animals of the forest, made by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film, Elephants Dream, the film was made using Blender, a free and open-source software application for 3D computer modeling and animation developed by the same foundation. Unlike that earlier project, the tone and visuals departed from a cryptic story and dark visuals to one of comedy, cartoons, and light-heartedness.",
+  },
+  {
+    videoId: "2",
+    src: "https://inox.qoder.byteark.com/video-objects/QcgIIpjGEDo4/playlist.m3u8",
+    type: "application/x-mpegURL",
+    title: "Curious Little Bird",
+    poster:
+      "https://qoder.byteark.com/images/video-frames/1/Ep/4X/1Ep4XuKnbIaA-large.jpg",
+    description: "This one is also a popular test video.",
+  },
+];
