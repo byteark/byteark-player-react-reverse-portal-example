@@ -1,22 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useMemo } from "react";
+import * as portals from "react-reverse-portal";
+import Player from "./Player";
+import "./App.css";
+import { SOURCE } from "./source";
 
 function App() {
+  const [index, setIndex] = useState(0);
+  const [isPictureMode, setIsPictureMode] = useState(false);
+  const [instance, setInstance] = useState();
+
+  const portalNode = useMemo(() => portals.createHtmlPortalNode(), []);
+
+  const nextVideo = () => {
+    const nextIndex = index + 1 >= SOURCE.length ? 0 : index + 1;
+    instance.src(SOURCE[nextIndex
+    ]);
+    if(isPictureMode) setIsPictureMode(false)
+    setIndex(nextIndex);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <span className="title">BYTEARK PLAYER WITH REACT REVERSE PORTAL EXAMPLE</span>
+        <div className="button-container">
+          <button className="button" onClick={nextVideo}>next</button>
+          <button className="button" onClick={() => setIsPictureMode(!isPictureMode)}> {isPictureMode ? 'exit' : 'enter'} picture mode </button>
+        </div>
+        <portals.InPortal node={portalNode}>
+          <Player
+            onReady={(playerInstance) => {
+              setInstance(playerInstance);
+            }}
+          />
+        </portals.InPortal>
+        <div className="container-row">
+          <div className="container">
+            {(!isPictureMode && index === 0) ? (
+              <portals.OutPortal node={portalNode} />
+            ) : (
+              <div className="container-placeholder" />
+            )}
+          </div>
+          <div className="container">
+            {(!isPictureMode && index === 1 ) ? (
+              <portals.OutPortal node={portalNode} />
+            ) : (
+              <div className="container-placeholder" />
+            )}
+          </div>
+          <div className="container">
+            {(!isPictureMode &&index === 2 ) ? (
+              <portals.OutPortal node={portalNode} />
+            ) : (
+              <div className="container-placeholder" />
+            )}
+          </div>
+        </div>
+        <div className="picture-mode-container">{isPictureMode && <portals.OutPortal node={portalNode} />}</div>
       </header>
     </div>
   );
