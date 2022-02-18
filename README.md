@@ -14,3 +14,4 @@ This project is an example of using ByteArk Player React with React Reverse Port
 ## Read more
 
 - [ByteArk Player React](https://github.com/byteark/byteark-player-react)
+- [React Reverse Portal](https://github.com/httptoolkit/react-reverse-portal)
